@@ -3,9 +3,9 @@ import './styles/App.css';
 function App() {
   return (
     <div className="App">
-      {/* <header>
+      <header>
         <nav>navbar</nav>
-      </header> */}
+      </header>
       <div className='content'>
         <div className='application-area'>
           <div className='application-container'>
