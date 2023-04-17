@@ -1,15 +1,48 @@
+import { useEffect, useState } from 'react';
 import './styles/App.css';
 
 function App() {
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState([]);
+  const [toggleApp, setToggleApp] = useState(false);
+
+  const onClick = ()=>{
+    setToggleApp(!toggleApp)
+    let copy = category;
+    copy.push(title)
+    setCategory(copy)
+  }
+  const onInput = (e)=>{
+    setTitle(e.target.value);
+  }
+  
   return (
     <div className="App">
       <header>
-        <nav>navbar</nav>
+        <nav>
+          <input onInput={onInput}></input>
+          <button onClick={onClick}>세팅</button>
+        </nav>
       </header>
       <div className='content'>
         <div className='application-area'>
           <div className='application-container'>
-            <div className='application-icon'>
+            {
+              category &&
+              category.map((data, i)=>{
+                return(
+                  <div className='application-icon' key={i}>
+                    <h1>{data}</h1>
+                    <p>하이</p>
+                  </div>
+                )
+              })
+            }
+            {/* <div className='application-icon'>
+              <h1>운동목록</h1>
+              <p>하이</p>
+            </div> */}
+            {/* <div className='application-icon'>
               <h1>운동목록</h1>
               <p>하이</p>
             </div>
@@ -20,11 +53,7 @@ function App() {
             <div className='application-icon'>
               <h1>운동목록</h1>
               <p>하이</p>
-            </div>
-            <div className='application-icon'>
-              <h1>운동목록</h1>
-              <p>하이</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className='specification-area'>
